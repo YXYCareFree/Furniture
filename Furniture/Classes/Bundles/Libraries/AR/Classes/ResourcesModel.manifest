@@ -1,0 +1,13 @@
+ManifestFileVersion: 0
+CRC: 899854562
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: cheer
+      Dependencies: {}
+    Info_1:
+      Name: safaright
+      Dependencies: {}
+    Info_2:
+      Name: sofaleft
+      Dependencies: {}

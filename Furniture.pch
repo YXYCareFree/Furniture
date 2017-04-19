@@ -1,0 +1,60 @@
+//
+//  Furniture.pch
+//  Furniture
+//
+//  Created by beyondSoft on 17/1/3.
+//  Copyright © 2017年 beyondSoft. All rights reserved.
+//
+
+#ifndef Furniture_pch
+#define Furniture_pch
+
+#define MAS_SHORTHAND
+#define MAS_SHORTHAND_GLOBALS
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//
+// Prefix header
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+
+#import "Header.h"
+#import <UIKit/UIKit.h>
+
+#import "UINavigationController+BackBarButtonItem.h"
+#import "UIViewController+Extension.h"
+
+#import "YXYRequest.h"
+#import "YXYWebViewManager.h"
+
+#import "SSZipArchive.h"
+
+#import "YTKNetwork.h"
+
+#import "NetworkManager.h"
+
+#endif
+
+#include "Preprocessor.h"
+#include "UnityTrampolineConfigure.h"
+#include "UnityInterface.h"
+
+#ifndef __OBJC__
+#if USE_IL2CPP_PCH
+#include "il2cpp_precompiled_header.h"
+#endif
+#endif
+
+#ifndef TARGET_IPHONE_SIMULATOR
+#define TARGET_IPHONE_SIMULATOR 0
+#endif
+
+#define printf_console printf
+
+
+
+
+#endif /* Furniture_pch */
