@@ -49,6 +49,10 @@ public:
 	Dictionary_2_t3671312409 * ___modelList_10;
 	// UnityEngine.UI.Slider WWWManager::slider
 	Slider_t297367283 * ___slider_12;
+	// UnityEngine.GameObject WWWManager::loading
+	GameObject_t1756533147 * ___loading_15;
+	// UnityEngine.GameObject WWWManager::loadComplete
+	GameObject_t1756533147 * ___loadComplete_16;
 
 public:
 	inline static int32_t get_offset_of_hueypath1_3() { return static_cast<int32_t>(offsetof(WWWManager_t1701787038, ___hueypath1_3)); }
@@ -121,6 +125,24 @@ public:
 	{
 		___slider_12 = value;
 		Il2CppCodeGenWriteBarrier(&___slider_12, value);
+	}
+
+	inline static int32_t get_offset_of_loading_15() { return static_cast<int32_t>(offsetof(WWWManager_t1701787038, ___loading_15)); }
+	inline GameObject_t1756533147 * get_loading_15() const { return ___loading_15; }
+	inline GameObject_t1756533147 ** get_address_of_loading_15() { return &___loading_15; }
+	inline void set_loading_15(GameObject_t1756533147 * value)
+	{
+		___loading_15 = value;
+		Il2CppCodeGenWriteBarrier(&___loading_15, value);
+	}
+
+	inline static int32_t get_offset_of_loadComplete_16() { return static_cast<int32_t>(offsetof(WWWManager_t1701787038, ___loadComplete_16)); }
+	inline GameObject_t1756533147 * get_loadComplete_16() const { return ___loadComplete_16; }
+	inline GameObject_t1756533147 ** get_address_of_loadComplete_16() { return &___loadComplete_16; }
+	inline void set_loadComplete_16(GameObject_t1756533147 * value)
+	{
+		___loadComplete_16 = value;
+		Il2CppCodeGenWriteBarrier(&___loadComplete_16, value);
 	}
 };
 

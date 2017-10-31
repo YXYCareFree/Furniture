@@ -14,6 +14,8 @@
 struct GameObject_t1756533147;
 // System.Collections.Generic.List`1<UnityEngine.GameObject>
 struct List_1_t1125654279;
+// UnityEngine.UI.Button
+struct Button_t2872111280;
 
 #include "UnityEngine_UnityEngine_MonoBehaviour1158329972.h"
 
@@ -60,6 +62,34 @@ public:
 	{
 		___recordObj_4 = value;
 		Il2CppCodeGenWriteBarrier(&___recordObj_4, value);
+	}
+};
+
+struct MousePitch_t1694457349_StaticFields
+{
+public:
+	// UnityEngine.UI.Button MousePitch::measureButton
+	Button_t2872111280 * ___measureButton_5;
+	// UnityEngine.UI.Button MousePitch::wasteButton
+	Button_t2872111280 * ___wasteButton_6;
+
+public:
+	inline static int32_t get_offset_of_measureButton_5() { return static_cast<int32_t>(offsetof(MousePitch_t1694457349_StaticFields, ___measureButton_5)); }
+	inline Button_t2872111280 * get_measureButton_5() const { return ___measureButton_5; }
+	inline Button_t2872111280 ** get_address_of_measureButton_5() { return &___measureButton_5; }
+	inline void set_measureButton_5(Button_t2872111280 * value)
+	{
+		___measureButton_5 = value;
+		Il2CppCodeGenWriteBarrier(&___measureButton_5, value);
+	}
+
+	inline static int32_t get_offset_of_wasteButton_6() { return static_cast<int32_t>(offsetof(MousePitch_t1694457349_StaticFields, ___wasteButton_6)); }
+	inline Button_t2872111280 * get_wasteButton_6() const { return ___wasteButton_6; }
+	inline Button_t2872111280 ** get_address_of_wasteButton_6() { return &___wasteButton_6; }
+	inline void set_wasteButton_6(Button_t2872111280 * value)
+	{
+		___wasteButton_6 = value;
+		Il2CppCodeGenWriteBarrier(&___wasteButton_6, value);
 	}
 };
 

@@ -70,7 +70,7 @@
  *  @return 是否支持旋转
  */
 -(BOOL)shouldAutorotate{
-    NSLog(@"%@", _shouldAutorotate?@"YES":@"NO");
+    NSLog(@"tabbar%@", _shouldAutorotate?@"YES":@"NO");
     return _shouldAutorotate;
 //    return NO;
 }

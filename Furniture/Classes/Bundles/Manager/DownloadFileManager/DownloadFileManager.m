@@ -13,9 +13,18 @@
 
 @interface DownloadFileManager ()<NSURLSessionDownloadDelegate>
 
+@property (nonatomic, strong) NSURLSessionDownloadTask * task;
+
 @end
 
 @implementation DownloadFileManager
+
+- (void)cancelDownload{
+    if (self.task && self.task.state != NSURLSessionTaskStateCompleted) {
+        NSLog(@"任务取消了");
+        [self.task cancel];
+    }
+}
 
 - (void)downloadFileWithUrl:(NSString *)url{
     
@@ -39,7 +48,7 @@
     [task resume];
 }
 
-- (void)downloadFileWithUrl:(NSString *)url progress:(DownloadProgress)progress success:(DownloadFileSuccessBlock)success failure:(DownloadFileFailureBlock)failure{
+- (NSURLSessionDownloadTask *)downloadFileWithUrl:(NSString *)url progress:(DownloadProgress)progress success:(DownloadFileSuccessBlock)success failure:(DownloadFileFailureBlock)failure{
     
     self.progressBlock = progress;
     
@@ -49,15 +58,20 @@
     
     NSString * destinationPath = [AR_CACHES_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"AR%@", md5]];
     
+    if ([DownloadFileManager sizeCachesWithPath:destinationPath] > 0) {
+        success(destinationPath);
+        return nil;
+    }
+    
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     
-    NSProgress * progress1 = nil;
-    
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    NSURLSessionDownloadTask * task = [manager downloadTaskWithRequest:request progress:&progress1 destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+    self.task = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         
-        //使用fileURLWithPath用来访问本地文件
-        NSLog(@"URL路径%@\n, path=%@", [NSURL fileURLWithPath:zipPath], zipPath);
+        float downloadPro = 1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount;
+        self.progressBlock(downloadPro);
+        
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
@@ -68,18 +82,18 @@
             
             NSLog(@"\n\n解压%@\n\n", ok?@"成功":error);
             
-            NSString * filePath;
-            for (NSString * str in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil]) {
-                if (![str hasSuffix:@"manifest"] && ![str hasSuffix:@"meta"]) {
-                    filePath = [destinationPath stringByAppendingPathComponent:str];
-                    
-                    if (filePath) {
-                        success(destinationPath);
-                    }
-                }
+//            NSString * filePath;
+            if ([DownloadFileManager sizeCachesWithPath:destinationPath] > 0) {
+                success(destinationPath);
             }
-//            if (filePath) {
-//                success(filePath);
+//            for (NSString * str in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil]) {
+//                if (![str hasSuffix:@"manifest"] && ![str hasSuffix:@"meta"]) {
+//                    filePath = [destinationPath stringByAppendingPathComponent:str];
+//                    
+//                    if (filePath) {
+//                        success(destinationPath);
+//                    }
+//                }
 //            }
         });
         
@@ -87,14 +101,14 @@
         
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         
-        [progress1 removeObserver:self forKeyPath:@"fractionCompleted"];
         if (error) {
             failure(error);
         }
+        
     }];
-    
-    [progress1 addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
-    [task resume];
+
+    [_task resume];
+    return self.task;
 }
 
 - (void)downloadFileWithUrl:(NSString *)url success:(DownloadFileSuccessBlock)success failure:(DownloadFileFailureBlock)failure{
@@ -108,12 +122,13 @@
     if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
         
         NSProgress * progress = (NSProgress *)object;
-        NSLog(@"%f", progress.fractionCompleted);
+//        NSLog(@"%f", progress.fractionCompleted);
         if (self.progressBlock) {
             self.progressBlock(progress.fractionCompleted);
         }
         
-    }
+    }else
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 #pragma mark--NSURLSessionDownloadDelegate
 /**

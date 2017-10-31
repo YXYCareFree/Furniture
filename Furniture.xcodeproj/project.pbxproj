@@ -64,9 +64,7 @@
 		3DED73FC1E2DC19900725CCC /* DownloadFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED73FB1E2DC19900725CCC /* DownloadFileManager.m */; };
 		3DED73FF1E2E0C6F00725CCC /* PriceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED73FE1E2E0C6F00725CCC /* PriceLabel.m */; };
 		3DED74021E2E0C8300725CCC /* TitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DED74011E2E0C8300725CCC /* TitleLabel.m */; };
-		9A50CD991E88E57100796BB0 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A50CD931E88E57100796BB0 /* SDBrowserImageView.m */; };
-		9A50CD9A1E88E57100796BB0 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A50CD951E88E57100796BB0 /* SDPhotoBrowser.m */; };
-		9A50CD9B1E88E57100796BB0 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A50CD981E88E57100796BB0 /* SDWaitingView.m */; };
+		9A5E7BDE1EA9ECB20077E8CB /* AR.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E7BDD1EA9ECB20077E8CB /* AR.xcassets */; };
 		9A926B1F1E83C7D800A18D80 /* SearchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A926B1D1E83C7D800A18D80 /* SearchDetailViewController.m */; };
 		9A926B201E83C7D800A18D80 /* SearchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A926B1E1E83C7D800A18D80 /* SearchDetailViewController.xib */; };
 		9A926B231E83C92100A18D80 /* SearchDetailInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A926B221E83C92100A18D80 /* SearchDetailInteractor.m */; };
@@ -244,8 +242,7 @@
 		9AD5C6E61E94F26000B3D333 /* ARAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5C6E51E94F26000B3D333 /* ARAdapter.m */; };
 		9AD5C6EA1E94F36800B3D333 /* ARTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5C6E81E94F36800B3D333 /* ARTableViewCell.m */; };
 		9AD5C6EB1E94F36800B3D333 /* ARTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD5C6E91E94F36800B3D333 /* ARTableViewCell.xib */; };
-		9AD5C6EE1E94F70900B3D333 /* ARViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5C6ED1E94F70800B3D333 /* ARViewController.mm */; };
-		9AD5C6F11E94F76900B3D333 /* ARController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5C6F01E94F76900B3D333 /* ARController.m */; };
+		9AD5C6F11E94F76900B3D333 /* ARController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5C6F01E94F76900B3D333 /* ARController.mm */; };
 		A39BE6D41E1B929100ED9D59 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = A39BE6D31E1B929100ED9D59 /* main.mm */; };
 		A39BE6D71E1B929100ED9D59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A39BE6D61E1B929100ED9D59 /* AppDelegate.m */; };
 		A39BE6DD1E1B929100ED9D59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A39BE6DB1E1B929100ED9D59 /* Main.storyboard */; };
@@ -266,7 +263,6 @@
 		A39BE77B1E1B95F300ED9D59 /* Shopping.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A39BE77A1E1B95F300ED9D59 /* Shopping.xcassets */; };
 		A39BE77E1E1B964300ED9D59 /* HomeBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A39BE77D1E1B964300ED9D59 /* HomeBannerView.m */; };
 		A39BE7811E1B972300ED9D59 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A39BE7801E1B972300ED9D59 /* ScanViewController.m */; };
-		A39BE7831E1B983400ED9D59 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = A39BE7821E1B983400ED9D59 /* index2.html */; };
 		A39BE7AE1E1F963E00ED9D59 /* FunctionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A39BE7AD1E1F963E00ED9D59 /* FunctionTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -376,13 +372,8 @@
 		3DED74001E2E0C8300725CCC /* TitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleLabel.h; sourceTree = "<group>"; };
 		3DED74011E2E0C8300725CCC /* TitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleLabel.m; sourceTree = "<group>"; };
 		5A8960D3C072B8C0E9F3F667 /* Pods-Furniture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Furniture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Furniture/Pods-Furniture.debug.xcconfig"; sourceTree = "<group>"; };
-		9A50CD921E88E57100796BB0 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
-		9A50CD931E88E57100796BB0 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
-		9A50CD941E88E57100796BB0 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
-		9A50CD951E88E57100796BB0 /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
-		9A50CD961E88E57100796BB0 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
-		9A50CD971E88E57100796BB0 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
-		9A50CD981E88E57100796BB0 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
+		9A2C890D1F668D4C00B24B20 /* Furniture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Furniture.entitlements; sourceTree = "<group>"; };
+		9A5E7BDD1EA9ECB20077E8CB /* AR.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AR.xcassets; sourceTree = "<group>"; };
 		9A926B1C1E83C7D800A18D80 /* SearchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDetailViewController.h; sourceTree = "<group>"; };
 		9A926B1D1E83C7D800A18D80 /* SearchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDetailViewController.m; sourceTree = "<group>"; };
 		9A926B1E1E83C7D800A18D80 /* SearchDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchDetailViewController.xib; sourceTree = "<group>"; };
@@ -7163,10 +7154,8 @@
 		9AD5C6E71E94F36800B3D333 /* ARTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTableViewCell.h; sourceTree = "<group>"; };
 		9AD5C6E81E94F36800B3D333 /* ARTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTableViewCell.m; sourceTree = "<group>"; };
 		9AD5C6E91E94F36800B3D333 /* ARTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARTableViewCell.xib; sourceTree = "<group>"; };
-		9AD5C6EC1E94F70800B3D333 /* ARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
-		9AD5C6ED1E94F70800B3D333 /* ARViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARViewController.mm; sourceTree = "<group>"; };
 		9AD5C6EF1E94F76900B3D333 /* ARController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARController.h; sourceTree = "<group>"; };
-		9AD5C6F01E94F76900B3D333 /* ARController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARController.m; sourceTree = "<group>"; };
+		9AD5C6F01E94F76900B3D333 /* ARController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARController.mm; sourceTree = "<group>"; };
 		A39BE6CF1E1B929100ED9D59 /* Furniture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Furniture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A39BE6D31E1B929100ED9D59 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		A39BE6D51E1B929100ED9D59 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -7200,7 +7189,6 @@
 		A39BE77D1E1B964300ED9D59 /* HomeBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBannerView.m; sourceTree = "<group>"; };
 		A39BE77F1E1B972300ED9D59 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		A39BE7801E1B972300ED9D59 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
-		A39BE7821E1B983400ED9D59 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		A39BE7841E1B9AEA00ED9D59 /* Furniture.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Furniture.pch; sourceTree = "<group>"; };
 		A39BE7851E1B9C4800ED9D59 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		A39BE7AC1E1F963E00ED9D59 /* FunctionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionTableViewCell.h; sourceTree = "<group>"; };
@@ -7568,23 +7556,8 @@
 			children = (
 				9ABF1ADF1E963CFF0013E881 /* DHGuidePageHUD */,
 				9AD58FD61E94C79600B3D333 /* AR */,
-				9A50CD911E88E57100796BB0 /* SDPhotoBrowser */,
 			);
 			path = Libraries;
-			sourceTree = "<group>";
-		};
-		9A50CD911E88E57100796BB0 /* SDPhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				9A50CD921E88E57100796BB0 /* SDBrowserImageView.h */,
-				9A50CD931E88E57100796BB0 /* SDBrowserImageView.m */,
-				9A50CD941E88E57100796BB0 /* SDPhotoBrowser.h */,
-				9A50CD951E88E57100796BB0 /* SDPhotoBrowser.m */,
-				9A50CD961E88E57100796BB0 /* SDPhotoBrowserConfig.h */,
-				9A50CD971E88E57100796BB0 /* SDWaitingView.h */,
-				9A50CD981E88E57100796BB0 /* SDWaitingView.m */,
-			);
-			path = SDPhotoBrowser;
 			sourceTree = "<group>";
 		};
 		9ABF1ADF1E963CFF0013E881 /* DHGuidePageHUD */ = {
@@ -7602,8 +7575,6 @@
 		9AD58FD61E94C79600B3D333 /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				9AD5C6EC1E94F70800B3D333 /* ARViewController.h */,
-				9AD5C6ED1E94F70800B3D333 /* ARViewController.mm */,
 				9AD5AB081E94CA8300B3D333 /* Data */,
 				9AD5AB091E94CA8300B3D333 /* QCAR */,
 				9AD58FD71E94C96300B3D333 /* AlvaTool.h */,
@@ -15011,7 +14982,7 @@
 			isa = PBXGroup;
 			children = (
 				9AD5C6EF1E94F76900B3D333 /* ARController.h */,
-				9AD5C6F01E94F76900B3D333 /* ARController.m */,
+				9AD5C6F01E94F76900B3D333 /* ARController.mm */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -15038,6 +15009,7 @@
 		9AD5C6E01E94F1AC00B3D333 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9A5E7BDD1EA9ECB20077E8CB /* AR.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -15047,7 +15019,6 @@
 			children = (
 				A39BE7851E1B9C4800ED9D59 /* Header.h */,
 				A39BE7841E1B9AEA00ED9D59 /* Furniture.pch */,
-				A39BE7821E1B983400ED9D59 /* index2.html */,
 				A39BE6D11E1B929100ED9D59 /* Furniture */,
 				A39BE6D01E1B929100ED9D59 /* Products */,
 				0A5D6F767C33A344E6C8AAF0 /* Pods */,
@@ -15066,6 +15037,7 @@
 		A39BE6D11E1B929100ED9D59 /* Furniture */ = {
 			isa = PBXGroup;
 			children = (
+				9A2C890D1F668D4C00B24B20 /* Furniture.entitlements */,
 				A39BE6E91E1B931900ED9D59 /* Classes */,
 				A39BE6D21E1B929100ED9D59 /* Supporting Files */,
 			);
@@ -15396,7 +15368,13 @@
 				TargetAttributes = {
 					A39BE6CE1E1B929100ED9D59 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9XZQQ29VBW;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -15423,6 +15401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5E7BDE1EA9ECB20077E8CB /* AR.xcassets in Resources */,
 				9AD5AB0A1E94CA8300B3D333 /* Data in Resources */,
 				9AD5AB0B1E94CA8300B3D333 /* QCAR in Resources */,
 				A39BE76A1E1B956600ED9D59 /* MineViewController.xib in Resources */,
@@ -15433,7 +15412,6 @@
 				3D8D8A831E7A6CAC0054E818 /* Login.xcassets in Resources */,
 				9AB0DDE61E84FF5B00CDE932 /* DetailTableViewCell.xib in Resources */,
 				A39BE77B1E1B95F300ED9D59 /* Shopping.xcassets in Resources */,
-				A39BE7831E1B983400ED9D59 /* index2.html in Resources */,
 				9AD5AAD31E94CA5100B3D333 /* ResourcesModel.manifest in Resources */,
 				3D8D8A7E1E7A33AB0054E818 /* LoginViewController.xib in Resources */,
 				3D5071541E78E65600A10B0C /* WebView.xcassets in Resources */,
@@ -15555,15 +15533,13 @@
 				9AD5AA891E94CA4F00B3D333 /* Bulk_Generics_7.cpp in Sources */,
 				3DB55BCD1E778DE300750F80 /* YXYRequest.m in Sources */,
 				9AD5AABC1E94CA4F00B3D333 /* Il2CppCompilerCalculateTypeValues_9Table.cpp in Sources */,
-				9AD5C6F11E94F76900B3D333 /* ARController.m in Sources */,
+				9AD5C6F11E94F76900B3D333 /* ARController.mm in Sources */,
 				3D5818271E4825B500AC6BD3 /* CTToastView.m in Sources */,
 				A39BE7AE1E1F963E00ED9D59 /* FunctionTableViewCell.m in Sources */,
 				9AD5AAC41E94CA4F00B3D333 /* Il2CppGuids.cpp in Sources */,
 				9AD5AA8B1E94CA4F00B3D333 /* Bulk_Generics_9.cpp in Sources */,
-				9AD5C6EE1E94F70900B3D333 /* ARViewController.mm in Sources */,
 				3DB55BE51E77D54000750F80 /* NetworkManager.m in Sources */,
 				9AD5AAA11E94CA4F00B3D333 /* Bulk_Vuforia.UnityExtensions_1.cpp in Sources */,
-				9A50CD9B1E88E57100796BB0 /* SDWaitingView.m in Sources */,
 				9AD5AAB61E94CA4F00B3D333 /* Il2CppCompilerCalculateTypeValues_3Table.cpp in Sources */,
 				9AD5AAAC1E94CA4F00B3D333 /* Il2CppCompilerCalculateTypeValues_13Table.cpp in Sources */,
 				9AD5AAB21E94CA4F00B3D333 /* Il2CppCompilerCalculateTypeValues_19Table.cpp in Sources */,
@@ -15643,7 +15619,6 @@
 				9AD5AAEA1E94CA5100B3D333 /* EAGLContextHelper.mm in Sources */,
 				9AD5AA9C1E94CA4F00B3D333 /* Bulk_UnityEngine_0.cpp in Sources */,
 				9ABF1AE51E963CFF0013E881 /* DHGifImageOperation.m in Sources */,
-				9A50CD991E88E57100796BB0 /* SDBrowserImageView.m in Sources */,
 				3DB55BE91E77D87A00750F80 /* ArchiverManager.m in Sources */,
 				9AD5AAC91E94CA4F00B3D333 /* Il2CppMethodPointerTable.cpp in Sources */,
 				9AD5AAA01E94CA4F00B3D333 /* Bulk_Vuforia.UnityExtensions_0.cpp in Sources */,
@@ -15669,7 +15644,6 @@
 				9AD5AACB1E94CA5100B3D333 /* UnityClassRegistration.cpp in Sources */,
 				9AD5AA781E94CA4F00B3D333 /* AlvaTool.mm in Sources */,
 				9AD5AA9A1E94CA4F00B3D333 /* Bulk_UnityEngine.UI_0.cpp in Sources */,
-				9A50CD9A1E88E57100796BB0 /* SDPhotoBrowser.m in Sources */,
 				9AD5AA7F1E94CA4F00B3D333 /* Bulk_Assembly-UnityScript_0.cpp in Sources */,
 				9AD5AABB1E94CA4F00B3D333 /* Il2CppCompilerCalculateTypeValues_8Table.cpp in Sources */,
 				9AD5AA8A1E94CA4F00B3D333 /* Bulk_Generics_8.cpp in Sources */,
@@ -15854,9 +15828,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = Furniture/Furniture.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yuan Feng (GB6FH9NFJR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9XZQQ29VBW;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = NO;
@@ -15867,7 +15842,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFDownloadRequestOperation\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/Public/JSONModel\"",
 					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
@@ -15898,8 +15872,6 @@
 					"$(inherited)",
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/AFDownloadRequestOperation\"",
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
 					"-isystem",
@@ -15933,7 +15905,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"AFDownloadRequestOperation\"",
 					"-l\"AFNetworking\"",
 					"-l\"JSONModel\"",
 					"-l\"MJRefresh\"",
@@ -15967,8 +15938,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beyondsoft.furniture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "9abc993c-5672-4806-8f3e-23d98055c6cb";
+				PROVISIONING_PROFILE_SPECIFIER = furnitureDev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				UNITY_RUNTIME_VERSION = 5.5.0f3;
 				UNITY_SCRIPTING_BACKEND = il2cpp;
@@ -15982,6 +15953,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = Furniture/Furniture.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yuan Feng (GB6FH9NFJR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9XZQQ29VBW;
@@ -15995,7 +15967,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFDownloadRequestOperation\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/Public/JSONModel\"",
 					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
@@ -16026,8 +15997,6 @@
 					"$(inherited)",
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/AFDownloadRequestOperation\"",
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
 					"-isystem",
@@ -16061,7 +16030,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"AFDownloadRequestOperation\"",
 					"-l\"AFNetworking\"",
 					"-l\"JSONModel\"",
 					"-l\"MJRefresh\"",
@@ -16095,7 +16063,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beyondsoft.furniture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "238b9794-d959-45fc-b3dc-3db6e1e073b9";
+				PROVISIONING_PROFILE = "344cf637-511e-4eac-a123-f66a0bbe40b6";
 				PROVISIONING_PROFILE_SPECIFIER = funitureDistributionProfile;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				UNITY_RUNTIME_VERSION = 5.5.0f3;

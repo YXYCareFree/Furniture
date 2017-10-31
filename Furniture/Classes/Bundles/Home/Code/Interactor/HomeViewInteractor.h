@@ -17,17 +17,20 @@
 
 - (void)refreshHome;
 
+- (void)endRefreshHome;
+
 - (void)loadHome;
 
 - (void)scanClicked:(id)sender;
 
 - (void)ARClicked:(id)sender;
-
+//热门活动点击
 - (void)activityImageViewClicked:(UITapGestureRecognizer *)tap;
-
+//商品推荐点击
 - (void)recommendImageViewClicked:(UITapGestureRecognizer *)tap;
 
 - (void)searchClicked:(id)sender;
-
+//商品分类点击
 - (void)categoryClicked:(UITapGestureRecognizer *)tap;
+
 @end

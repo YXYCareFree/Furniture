@@ -9,6 +9,7 @@
 #import "ARController.h"
 #import "SDKTools.h"
 #import "AlvaTool.h"
+#import "DHGuidePageHUD.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -16,13 +17,23 @@
 
 #import "ARInteractor.h"
 
+#define GUIDEKEY  @"GUIDEKEY"
+
+static const char* allmodelsID;
+
 @interface ARController ()
 
 @property (nonatomic, strong) UIView * footerView;
 
+@property (nonatomic, strong) UIButton * helpBtn;
+
+@property (nonatomic, strong) UIScrollView * scrollView;
+
 @property (nonatomic, strong) NSArray * dataArr;
 
 @property (nonatomic, strong) ARInteractor * interactor;
+
+@property (nonatomic, assign) BOOL showHelp;
 
 @end
 
@@ -38,6 +49,7 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"%@==***dealloc", [self class]);
 }
 
 - (BOOL)prefersStatusBarHidden{
@@ -48,8 +60,9 @@
     
     [super viewWillAppear:animated];
 
-    [UIApplication sharedApplication].statusBarHidden = YES;
+    [AlvaTool sharedInstance].isStatusBarHidden = YES;
     self.navigationController.navigationBarHidden = YES;
+
     
     [[NSNotificationCenter defaultCenter] postNotificationName:InterfaceOrientation object:@"YES"];
     
@@ -57,8 +70,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUnityViewFrame) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
     
+    [AlvaTool sharedInstance].isRotate = YES;
     // 强制转为横屏
     [self setUIInterfaceOrientationLandscapeRight];
+    
+    [self setStaticGuidePage];
 }
 
 - (void)changeUnityViewFrame{
@@ -67,16 +83,17 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [AlvaTool sharedInstance].isRotate = NO;
+    [self.interactor loadGoodsList];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:InterfaceOrientation object:@"NO"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     //清除模型
     UnitySendMessage("GameObjectController", "clearAll", "");
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:InterfaceOrientation object:@"YES"];
     self.navigationController.navigationBarHidden = NO;
     
-    [UIApplication sharedApplication].statusBarHidden = NO;
     [super viewWillDisappear:animated];
 }
 
@@ -90,11 +107,35 @@
     
     [[AlvaTool sharedInstance] unityPause:NO];
     
+    [AlvaTool sharedInstance].imageArr = @[@"help1",
+                                           @"help2",
+                                           @"help3",
+                                           @"help4"];;
     [self.view addSubview:[[AlvaTool sharedInstance] getUnityView]];
     
     [self initTableView];
     
-    [self.interactor loadGoodsList];
+    [self addHelpBtn];
+}
+
+- (void)setStaticGuidePage {
+    
+    NSInteger count = [[[NSUserDefaults standardUserDefaults] objectForKey:GUIDEKEY] integerValue];
+    if (!count) {
+        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:GUIDEKEY];
+        count= 1;
+    }
+    if (count <= 3) {
+        
+        count++;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:count] forKey:GUIDEKEY];
+        NSArray *imageNameArray = @[@"help1",@"help2",@"help3", @"help4"];
+        DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:[UIScreen mainScreen].bounds imageNameArray:imageNameArray buttonIsHidden:YES];
+        guidePage.slideInto = YES;
+        guidePage.skipBtnRect = CGRectMake(kScreenWidth - 80, 10, 50, 30);
+        [[UIApplication sharedApplication].keyWindow addSubview:guidePage];
+        
+    }
 }
 
 - (void)initTableView{
@@ -137,5 +178,71 @@
     }
     return _footerView;
 }
+
+- (void)addHelpBtn
+{
+    _showHelp = NO;
+    
+    self.helpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.helpBtn.frame = CGRectMake(kScreenHeight - 50, 0, 60, 60);
+    [self.helpBtn setImage:[UIImage imageNamed:@"ui12-47-32.png"] forState:UIControlStateNormal];
+    [self.helpBtn addTarget:self action:@selector(helpClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.helpBtn];
+}
+
+- (void)helpClick{
+    
+    [self.view addSubview:self.scrollView];
+    [self.view insertSubview:self.helpBtn aboveSubview:self.scrollView];
+    _showHelp = !_showHelp;
+    
+    if (_showHelp) {
+        
+        [self.helpBtn setImage:readImageFromImageName(@"cha") forState:UIControlStateNormal];
+        
+    }else{
+        
+        [self.helpBtn setImage:[UIImage imageNamed:@"ui12-47-32.png"] forState:UIControlStateNormal];
+        [self.scrollView removeFromSuperview];
+    }
+}
+
+-(UIScrollView *)scrollView
+{
+    if (!_scrollView) {
+        
+        NSArray * arr = [AlvaTool sharedInstance].imageArr;
+
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+        _scrollView.bounces = NO;
+        _scrollView.backgroundColor = [UIColor redColor];
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.contentSize= CGSizeMake(kScreenWidth * arr.count, kScreenHeight);
+        _scrollView.contentOffset = CGPointMake(0, 0);
+        _scrollView.pagingEnabled = YES;
+
+        for (int i = 0; i < arr.count; i ++) {
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * i, 0, kScreenWidth, kScreenHeight)];
+            NSString *imageStr = arr[i];
+            imageView.image =   [UIImage imageNamed:imageStr];
+            [_scrollView addSubview:imageView];
+        }
+    }
+    return _scrollView;
+}
+
+extern "C" char* _ModelsID ( const char* string)
+{
+    if (string != NULL) {
+        
+        NSString *modelsName = [NSString stringWithUTF8String:string];
+        
+        allmodelsID = string;
+        
+        NSLog(@"###%@", modelsName);
+    }
+    return NULL;
+}
+
 
 @end

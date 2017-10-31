@@ -35,11 +35,14 @@
    
     [super viewWillAppear:animated];
    
+    [UIApplication sharedApplication].statusBarHidden = NO;
     self.navigationController.navigationBarHidden = NO;
     
+    [AlvaTool sharedInstance].isStatusBarHidden = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:InterfaceOrientation object:@"YES"];
     [[NSNotificationCenter defaultCenter] postNotificationName:StatusBarHidden object:@"NO"];
     
+    [AlvaTool sharedInstance].isRotate = YES;
     [self setUIInterfaceOrientationPortrait];
     
     [[AlvaTool sharedInstance] unityPause:YES];
@@ -48,7 +51,13 @@
     [bar setFrame:frame];
 }
 
+- (BOOL)shouldAutorotate{
+    return YES;
+}
+
 - (void)viewDidAppear:(BOOL)animated{
+    
+//    [AlvaTool sharedInstance].isRotate = NO;
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] postNotificationName:InterfaceOrientation object:@"NO"];
 }
@@ -161,9 +170,15 @@
     if (!_headerBannerView) {
         if (IS_IPAD_PRO || IS_IPAD) {
             _headerBannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300)];
-        }else
-        _headerBannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
-        _headerBannerView.interactor = self.interactor;
+        }else if (IS_IPHONE_PLUS) {
+            
+            _headerBannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 170)];
+            _headerBannerView.interactor = self.interactor;
+        }else{
+            
+            _headerBannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
+            _headerBannerView.interactor = self.interactor;
+        }
     }
     return _headerBannerView;
 }

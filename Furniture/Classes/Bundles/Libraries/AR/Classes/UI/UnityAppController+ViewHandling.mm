@@ -6,7 +6,7 @@
 #include "UI/UnityViewControllerBase.h"
 #include "Unity/DisplayManager.h"
 
-#import "MainTabBarViewController.h"
+
 // TEMP: ?
 #include "UI/ActivityIndicator.h"
 #include "UI/SplashScreen.h"
@@ -119,10 +119,16 @@ extern bool _unityAppReady;
     
     _rootView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _rootController.view    = _rootView;
+    if ([[AlvaTool sharedInstance].unityDefaultVC isKindOfClass:[UITabBarController class]])
+    {
+        [_rootController.view addSubview:[AlvaTool sharedInstance].unityDefaultVC.view];
+
+    }else{
     
-//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:[AlvaTool sharedInstance].unityDefaultVC];
-    self.tabbarController = [MainTabBarViewController new];
-    [_rootView addSubview:self.tabbarController.view];
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:[AlvaTool sharedInstance].unityDefaultVC];
+        [_rootController.view addSubview:self.navigationController.view];
+    }
+
 }
 
 - (void)willTransitionToViewController:(UIViewController*)toController fromViewController:(UIViewController*)fromController

@@ -1,9 +1,9 @@
 #pragma once
 
 #import <QuartzCore/CADisplayLink.h>
+#import "AlvaTool.h"
 
 #include "PluginBase/RenderPluginDelegate.h"
-#import "AlvaTool.h"
 
 @class UnityView;
 @class UnityViewControllerBase;
@@ -63,8 +63,8 @@
 @property (nonatomic, copy)									void(^quitHandler)();
 
 @property (nonatomic, strong) UINavigationController *navigationController;
+@property (nonatomic, strong) UITabBarController *tabbarController;
 
-@property (nonatomic, strong) UITabBarController * tabbarController;
 @end
 
 // Put this into mm file with your subclass implementation

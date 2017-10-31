@@ -10,6 +10,17 @@
 #define Header_h
 #import <UIKit/UIKit.h>
 
+#ifndef DEBUG
+#undef NSLog
+#define NSLog(args, ...)
+#endif
+//http://180.76.185.85:9003   121.40.133.139
+//192.168.95.74:9003
+#define BASE_URL     @"http://192.168.95.74:9003"
+
+
+#define STRING_ISNIL(__POINTER) (__POINTER == nil || [__POINTER isEqualToString:@""] || [__POINTER isEqualToString:@"(null)"] || [__POINTER isEqualToString:@"null"]|| [__POINTER isEqualToString:@"(NULL)"] || [__POINTER isEqualToString:@"NULL"] || [__POINTER isEqualToString:@"<null>"] || __POINTER == NULL || [__POINTER isKindOfClass:[NSNull class]] || [[__POINTER stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)?YES:NO
+
 #define kScreenWidth       [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight      [UIScreen mainScreen].bounds.size.height
 

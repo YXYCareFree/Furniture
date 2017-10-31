@@ -4,7 +4,7 @@ All Rights Reserved.
 ============================================================================*/
  
 
-#import "RenderPluginDelegate.h"
+#import "PluginBase/RenderPluginDelegate.h"
 
 // Controller to support native rendering callback
 @interface VuforiaRenderDelegate : NSObject<RenderPluginDelegate>

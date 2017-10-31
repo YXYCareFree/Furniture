@@ -2063,9 +2063,6 @@ extern const Il2CppGenericInst GenInst_BackgroundPlaneBehaviour_t2431285219_0_0_
 extern const Il2CppType ReconstructionBehaviour_t4009935945_0_0_0;
 static const Il2CppType* GenInst_ReconstructionBehaviour_t4009935945_0_0_0_Types[] = { &ReconstructionBehaviour_t4009935945_0_0_0 };
 extern const Il2CppGenericInst GenInst_ReconstructionBehaviour_t4009935945_0_0_0 = { 1, GenInst_ReconstructionBehaviour_t4009935945_0_0_0_Types };
-extern const Il2CppType AudioSource_t1135106623_0_0_0;
-static const Il2CppType* GenInst_AudioSource_t1135106623_0_0_0_Types[] = { &AudioSource_t1135106623_0_0_0 };
-extern const Il2CppGenericInst GenInst_AudioSource_t1135106623_0_0_0 = { 1, GenInst_AudioSource_t1135106623_0_0_0_Types };
 extern const Il2CppType ComponentFactoryStarterBehaviour_t3249343815_0_0_0;
 static const Il2CppType* GenInst_ComponentFactoryStarterBehaviour_t3249343815_0_0_0_Types[] = { &ComponentFactoryStarterBehaviour_t3249343815_0_0_0 };
 extern const Il2CppGenericInst GenInst_ComponentFactoryStarterBehaviour_t3249343815_0_0_0 = { 1, GenInst_ComponentFactoryStarterBehaviour_t3249343815_0_0_0_Types };
@@ -2108,6 +2105,9 @@ extern const Il2CppGenericInst GenInst_VuforiaConfiguration_t3823746026_0_0_0 = 
 extern const Il2CppType ModelKey_t307841824_0_0_0;
 static const Il2CppType* GenInst_ModelKey_t307841824_0_0_0_Types[] = { &ModelKey_t307841824_0_0_0 };
 extern const Il2CppGenericInst GenInst_ModelKey_t307841824_0_0_0 = { 1, GenInst_ModelKey_t307841824_0_0_0_Types };
+extern const Il2CppType AudioSource_t1135106623_0_0_0;
+static const Il2CppType* GenInst_AudioSource_t1135106623_0_0_0_Types[] = { &AudioSource_t1135106623_0_0_0 };
+extern const Il2CppGenericInst GenInst_AudioSource_t1135106623_0_0_0 = { 1, GenInst_AudioSource_t1135106623_0_0_0_Types };
 static const Il2CppType* GenInst_CustomAttributeNamedArgument_t94157543_0_0_0_CustomAttributeNamedArgument_t94157543_0_0_0_Types[] = { &CustomAttributeNamedArgument_t94157543_0_0_0, &CustomAttributeNamedArgument_t94157543_0_0_0 };
 extern const Il2CppGenericInst GenInst_CustomAttributeNamedArgument_t94157543_0_0_0_CustomAttributeNamedArgument_t94157543_0_0_0 = { 2, GenInst_CustomAttributeNamedArgument_t94157543_0_0_0_CustomAttributeNamedArgument_t94157543_0_0_0_Types };
 static const Il2CppType* GenInst_CustomAttributeTypedArgument_t1498197914_0_0_0_CustomAttributeTypedArgument_t1498197914_0_0_0_Types[] = { &CustomAttributeTypedArgument_t1498197914_0_0_0, &CustomAttributeTypedArgument_t1498197914_0_0_0 };
@@ -2949,7 +2949,6 @@ extern const Il2CppGenericInst* const g_Il2CppGenericInstTable[798] =
 	&GenInst_BoxCollider_t22920061_0_0_0,
 	&GenInst_BackgroundPlaneBehaviour_t2431285219_0_0_0,
 	&GenInst_ReconstructionBehaviour_t4009935945_0_0_0,
-	&GenInst_AudioSource_t1135106623_0_0_0,
 	&GenInst_ComponentFactoryStarterBehaviour_t3249343815_0_0_0,
 	&GenInst_VuforiaBehaviour_t359035403_0_0_0,
 	&GenInst_MaskOutBehaviour_t2994129365_0_0_0,
@@ -2964,6 +2963,7 @@ extern const Il2CppGenericInst* const g_Il2CppGenericInstTable[798] =
 	&GenInst_VuMarkBehaviour_t2060629989_0_0_0,
 	&GenInst_VuforiaConfiguration_t3823746026_0_0_0,
 	&GenInst_ModelKey_t307841824_0_0_0,
+	&GenInst_AudioSource_t1135106623_0_0_0,
 	&GenInst_CustomAttributeNamedArgument_t94157543_0_0_0_CustomAttributeNamedArgument_t94157543_0_0_0,
 	&GenInst_CustomAttributeTypedArgument_t1498197914_0_0_0_CustomAttributeTypedArgument_t1498197914_0_0_0,
 	&GenInst_Single_t2076509932_0_0_0_Single_t2076509932_0_0_0,

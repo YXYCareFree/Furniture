@@ -10,7 +10,6 @@
 #import "WebViewJavascriptBridge.h"
 #import "Masonry.h"
 
-//http://180.76.185.85:9003/mall/account/toUserCenter.htm
 @interface MineViewController ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView * webView;
@@ -24,6 +23,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden = YES;
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mall/account/toUserCenter.htm", BASE_URL]]]];
     [super viewWillAppear:animated];
 }
 
@@ -55,7 +55,7 @@
     _webView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_webView];
     
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://180.76.185.85:9003/mall/account/toUserCenter.htm"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mall/account/toUserCenter.htm", BASE_URL]]]];
     
     self.UIWebViewBridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
     [self.UIWebViewBridge setWebViewDelegate:self];
@@ -76,7 +76,7 @@
 }
 #pragma mark--UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    if ([request.URL.absoluteString hasPrefix:@"http://180.76.185.85:9003/mall/app/prodDetail.htm?"]) {
+    if ([request.URL.absoluteString hasPrefix:[NSString stringWithFormat:@"%@/mall/app/prodDetail.htm?", BASE_URL]]) {
         self.navigationController.tabBarController.tabBar.hidden = YES;
     }else{
         self.navigationController.tabBarController.tabBar.hidden = NO;
@@ -172,7 +172,9 @@
 
 - (void)loadWebView{
     
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://180.76.185.85:9003/mall/account/toUserCenter.htm"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mall/account/toUserCenter.htm", BASE_URL]]]];
+    _webView.scrollView.scrollEnabled = YES;
+
 }
 
 @end

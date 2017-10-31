@@ -63,6 +63,7 @@
     
     request.failure = ^(YXYErrorResponse * errorResponse){
         NSLog(@"\n%s===OK\n", __FUNCTION__);
+        [self.interactor endRefreshHome];
     };
     
     [APIREQUEST startRequest:request];
@@ -95,6 +96,8 @@
     
     request.failure = ^(YXYErrorResponse * errorResponse){
         NSLog(@"\n%s===OK\n", __FUNCTION__);
+        [self.interactor endRefreshHome];
+
     };
     
     [APIREQUEST startRequest:request];
@@ -129,6 +132,8 @@
     
     request.failure = ^(YXYErrorResponse * errorResponse){
         NSLog(@"\n%s===OK\n", __FUNCTION__);
+        [self.interactor endRefreshHome];
+
     };
     
     [APIREQUEST startRequest:request];

@@ -182,7 +182,7 @@ class PhysicMaterial;
 class PhysicsMaterial2D; 
 class PreloadData; template <> void RegisterClass<PreloadData>();
 class RuntimeAnimatorController; template <> void RegisterClass<RuntimeAnimatorController>();
-class AnimatorController; 
+class AnimatorController; template <> void RegisterClass<AnimatorController>();
 class AnimatorOverrideController; 
 class SampleClip; template <> void RegisterClass<SampleClip>();
 class AudioClip; template <> void RegisterClass<AudioClip>();
@@ -243,7 +243,7 @@ void RegisterAllClasses()
 {
 void RegisterBuiltinTypes();
 RegisterBuiltinTypes();
-	//Total: 79 non stripped classes
+	//Total: 80 non stripped classes
 	//0. AssetBundle
 	RegisterClass<AssetBundle>();
 	//1. NamedObject
@@ -322,10 +322,10 @@ RegisterBuiltinTypes();
 	RegisterClass<BoxCollider>();
 	//38. MeshRenderer
 	RegisterClass<MeshRenderer>();
-	//39. SkinnedMeshRenderer
-	RegisterClass<SkinnedMeshRenderer>();
-	//40. AudioListener
+	//39. AudioListener
 	RegisterClass<AudioListener>();
+	//40. SkinnedMeshRenderer
+	RegisterClass<SkinnedMeshRenderer>();
 	//41. SpriteRenderer
 	RegisterClass<SpriteRenderer>();
 	//42. Collider2D
@@ -390,17 +390,19 @@ RegisterBuiltinTypes();
 	RegisterClass<Motion>();
 	//72. Avatar
 	RegisterClass<Avatar>();
-	//73. RenderSettings
+	//73. AnimatorController
+	RegisterClass<AnimatorController>();
+	//74. RenderSettings
 	RegisterClass<RenderSettings>();
-	//74. Light
+	//75. Light
 	RegisterClass<Light>();
-	//75. CGProgram
+	//76. CGProgram
 	RegisterClass<CGProgram>();
-	//76. FlareLayer
+	//77. FlareLayer
 	RegisterClass<FlareLayer>();
-	//77. LightmapSettings
+	//78. LightmapSettings
 	RegisterClass<LightmapSettings>();
-	//78. LightProbes
+	//79. LightProbes
 	RegisterClass<LightProbes>();
 
 }

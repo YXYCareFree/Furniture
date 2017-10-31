@@ -14,9 +14,8 @@
 @implementation ARAdapter
 
 - (void)getARList{
-    //90610b50bc414eadb0e6c1e8751b72d4
-    //可用3c48b092199141adbea1da14cb9f20f3
-    NSDictionary * params = @{@"commodityCode":@"c302c823ae3f43258be495fa2cb820ff,3c48b092199141adbea1da14cb9f20f3"};
+
+    NSDictionary * params = @{@"commodityCode":@"627cac7e4c584c6cbf9b5e6e91398dde,6537dacc092649928996d56666f12b59,57ebbacd75fb483e8a79bcec5b6f70e3,0a9f4ae8034342c48bf55b359a8f1683,3c48b092199141adbea1da14cb9f20f3,16d35c6edd0843ad97e3c19debbddd38,19d24f66d5274399abe7f92e426944c8,26caf68a7e674da6bb69563ea61c6cac,c01dd158b0a344b0aec53ac6fd9e0618,d48552eeed4d465a9beb3291a2612562"};
     YXYRequest * request = [YXYRequest new];
     
     request.apiName = @"/commodity/findCommodities";

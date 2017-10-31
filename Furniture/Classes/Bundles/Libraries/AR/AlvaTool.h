@@ -10,11 +10,20 @@
 
 @interface AlvaTool : NSObject
 
-- (void)showUnityWindow;
+//- (void)showUnityWindow;
 //- (void)hideUnityWindow;
 
 //设置初始要显示的视图
 @property (strong, nonatomic) UIViewController *unityDefaultVC;
+
+// AR助手图片资源
+@property (strong, nonatomic) NSArray *imageArr;
+
+
+// 设置是否开启转屏
+@property (assign, nonatomic) BOOL isRotate;
+
+@property (assign, nonatomic) BOOL isStatusBarHidden;
 
 + (AlvaTool *)sharedInstance;
 
@@ -27,8 +36,13 @@ void mainStart(int argc, char* argv[]);
 //取得由UnityAppController创建的window
 - (UIWindow *)getUnityWindow;
 
+//修改UnityWindow的背景色
+- (void)unityWindowWithBackgroundColor:(UIColor *)color;
+
+//获取unityController
 - (id)getUnityController;
 
+// 获取unityView
 - (UIView *)getUnityView;
 
 - (BOOL)app:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;

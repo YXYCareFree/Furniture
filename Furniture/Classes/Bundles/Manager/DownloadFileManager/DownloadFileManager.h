@@ -17,7 +17,7 @@ typedef void (^DownloadProgress)(double progress);
 
 @property (nonatomic, copy) DownloadProgress progressBlock;
 
-- (void)downloadFileWithUrl:(NSString *)url progress:(DownloadProgress)progress success:(DownloadFileSuccessBlock)success failure:(DownloadFileFailureBlock)failure;
+- (NSURLSessionDownloadTask *)downloadFileWithUrl:(NSString *)url progress:(DownloadProgress)progress success:(DownloadFileSuccessBlock)success failure:(DownloadFileFailureBlock)failure;
 
 - (void)downloadFileWithUrl:(NSString *)url success:(DownloadFileSuccessBlock)success failure:(DownloadFileFailureBlock)failure;
 
@@ -30,5 +30,7 @@ typedef void (^DownloadProgress)(double progress);
 + (BOOL)clearCachesWithFilePath:(NSString *)path;
 
 + (BOOL)clearAllCaches;
+
+- (void)cancelDownload;
 
 @end

@@ -12,8 +12,6 @@
 
 // UnityEngine.GameObject
 struct GameObject_t1756533147;
-// System.Collections.Generic.List`1<UnityEngine.GameObject>
-struct List_1_t1125654279;
 
 #include "UnityEngine_UnityEngine_MonoBehaviour1158329972.h"
 
@@ -37,10 +35,8 @@ public:
 	float ___SliderDefaultValue_5;
 	// System.Boolean ModifObjectSize::Hide
 	bool ___Hide_6;
-	// System.Collections.Generic.List`1<UnityEngine.GameObject> ModifObjectSize::modelsList
-	List_1_t1125654279 * ___modelsList_7;
 	// System.Boolean ModifObjectSize::showSlider
-	bool ___showSlider_8;
+	bool ___showSlider_7;
 
 public:
 	inline static int32_t get_offset_of_Obj_2() { return static_cast<int32_t>(offsetof(ModifObjectSize_t425106011, ___Obj_2)); }
@@ -86,21 +82,12 @@ public:
 		___Hide_6 = value;
 	}
 
-	inline static int32_t get_offset_of_modelsList_7() { return static_cast<int32_t>(offsetof(ModifObjectSize_t425106011, ___modelsList_7)); }
-	inline List_1_t1125654279 * get_modelsList_7() const { return ___modelsList_7; }
-	inline List_1_t1125654279 ** get_address_of_modelsList_7() { return &___modelsList_7; }
-	inline void set_modelsList_7(List_1_t1125654279 * value)
+	inline static int32_t get_offset_of_showSlider_7() { return static_cast<int32_t>(offsetof(ModifObjectSize_t425106011, ___showSlider_7)); }
+	inline bool get_showSlider_7() const { return ___showSlider_7; }
+	inline bool* get_address_of_showSlider_7() { return &___showSlider_7; }
+	inline void set_showSlider_7(bool value)
 	{
-		___modelsList_7 = value;
-		Il2CppCodeGenWriteBarrier(&___modelsList_7, value);
-	}
-
-	inline static int32_t get_offset_of_showSlider_8() { return static_cast<int32_t>(offsetof(ModifObjectSize_t425106011, ___showSlider_8)); }
-	inline bool get_showSlider_8() const { return ___showSlider_8; }
-	inline bool* get_address_of_showSlider_8() { return &___showSlider_8; }
-	inline void set_showSlider_8(bool value)
-	{
-		___showSlider_8 = value;
+		___showSlider_7 = value;
 	}
 };
 

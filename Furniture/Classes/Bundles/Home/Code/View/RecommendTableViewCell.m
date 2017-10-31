@@ -43,29 +43,44 @@
     }
     _dataSource = dataArr;
 
-    [self configTargetView:self.topLeftTitle withModel:0];
-    [self configTargetView:self.topLeftImageView withModel:0];
-    [self configTargetView:self.topLeftPrice withModel:0];
-    
-    [self configTargetView:self.topMiddleImageView withModel:1];
-    [self configTargetView:self.topMiddlePrice withModel:1];
-    [self configTargetView:self.topMiddleTitle withModel:1];
-    
-    [self configTargetView:self.topRightTitle withModel:2];
-    [self configTargetView:self.topRightImageView withModel:2];
-    [self configTargetView:self.topRightPrice withModel:2];
-    
-    [self configTargetView:self.bottomLeftPrice withModel:3];
-    [self configTargetView:self.bottomLeftTitle withModel:3];
-    [self configTargetView:self.bottomLeftImageView withModel:3];
-    
-    [self configTargetView:self.bottomMiddlePrice withModel:4];
-    [self configTargetView:self.bottomMiddleTitle withModel:4];
-    [self configTargetView:self.bottomMiddleImageView withModel:4];
-    
-    [self configTargetView:self.bottomRightPrice withModel:5];
-    [self configTargetView:self.bottomRightTitle withModel:5];
-    [self configTargetView:self.bottomRightImageView withModel:5];
+    for (int i = 0; i < _dataSource.count; i++) {
+        switch (i) {
+            case 0:
+                [self configTargetView:self.topLeftTitle withModel:0];
+                [self configTargetView:self.topLeftImageView withModel:0];
+                [self configTargetView:self.topLeftPrice withModel:0];
+                break;
+            case 1:
+                [self configTargetView:self.topMiddleImageView withModel:1];
+                [self configTargetView:self.topMiddlePrice withModel:1];
+                [self configTargetView:self.topMiddleTitle withModel:1];
+                break;
+            case 2:
+                [self configTargetView:self.topRightTitle withModel:2];
+                [self configTargetView:self.topRightImageView withModel:2];
+                [self configTargetView:self.topRightPrice withModel:2];
+                break;
+            case 3:
+                [self configTargetView:self.bottomLeftPrice withModel:3];
+                [self configTargetView:self.bottomLeftTitle withModel:3];
+                [self configTargetView:self.bottomLeftImageView withModel:3];
+                break;
+            case 4:
+                [self configTargetView:self.bottomMiddlePrice withModel:4];
+                [self configTargetView:self.bottomMiddleTitle withModel:4];
+                [self configTargetView:self.bottomMiddleImageView withModel:4];
+                break;
+            case 5:
+                
+                [self configTargetView:self.bottomRightPrice withModel:5];
+                [self configTargetView:self.bottomRightTitle withModel:5];
+                [self configTargetView:self.bottomRightImageView withModel:5];
+                break;
+   
+            default:
+                break;
+        }
+    }
 }
 
 - (void)addMasonry{

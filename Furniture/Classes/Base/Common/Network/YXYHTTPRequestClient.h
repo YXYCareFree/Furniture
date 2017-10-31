@@ -6,22 +6,16 @@
 //  Copyright © 2016年 beyondSoft. All rights reserved.
 //
 
-#import "AFHTTPRequestOperationManager.h"
+#import "AFHTTPSessionManager.h"
 
-@interface YXYHTTPRequestClient : AFHTTPRequestOperationManager
+@interface YXYHTTPRequestClient : AFHTTPSessionManager
 
 + (instancetype)shareManager;
 
--(AFHTTPRequestOperation *)getPath:(NSString *)URLString
+- (NSURLSessionDataTask *)postPath:(NSString *)URLString
                         apiVersion:(NSString *)version
-                        parameters:(NSDictionary *)parameters
-                           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-
--(AFHTTPRequestOperation *)postPath:(NSString *)URLString
-                         apiVersion:(NSString *)version
-                         parameters:(NSDictionary *)parameters
-                            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                        parameters:(id)parameters
+                           success:(void (^)(NSURLSessionDataTask * task, id _Nullable responseObject))success
+                           failure:(void (^)(NSURLSessionDataTask * _Nullable task, NSError * error))failure;
 
 @end

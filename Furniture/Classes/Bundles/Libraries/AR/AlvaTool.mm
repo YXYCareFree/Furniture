@@ -92,16 +92,21 @@ void mainStart(int argc, char* argv[] ){
     
 }
 
--(void)showUnityWindow
-{
-    [self.unityWindow makeKeyAndVisible];
-}
+//-(void)showUnityWindow
+//{
+//    [self.unityWindow makeKeyAndVisible];
+//}
 //
 //-(void)hideUnityWindow
 //{
 //    [self.window makeKeyAndVisible];
 //    NSLog(@"showWindow%@",self.window);
 //}
+- (void)unityWindowWithBackgroundColor:(UIColor *)color{
+
+    [unityController.window setBackgroundColor:color];
+
+}
 
 
 - (BOOL)app:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{

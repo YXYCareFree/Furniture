@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="229"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="229.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6J-IS-vsX">
@@ -52,16 +52,16 @@
                             <constraint firstAttribute="bottom" secondItem="wpn-jE-gcw" secondAttribute="bottom" constant="2" id="oVF-D3-bdU"/>
                         </constraints>
                     </view>
-                    <imageView tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_my_banner" translatesAutoresizingMaskIntoConstraints="NO" id="9s9-1a-rz6">
+                    <imageView tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity1" translatesAutoresizingMaskIntoConstraints="NO" id="9s9-1a-rz6">
                         <rect key="frame" x="0.0" y="40" width="187.5" height="95"/>
                     </imageView>
-                    <imageView tag="202" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_my_banner" translatesAutoresizingMaskIntoConstraints="NO" id="9QM-kB-oIG">
+                    <imageView tag="202" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity3" translatesAutoresizingMaskIntoConstraints="NO" id="9QM-kB-oIG">
                         <rect key="frame" x="0.0" y="135" width="187.5" height="94.5"/>
                     </imageView>
-                    <imageView tag="203" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_my_banner" translatesAutoresizingMaskIntoConstraints="NO" id="m1w-VK-XXt">
+                    <imageView tag="203" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity4" translatesAutoresizingMaskIntoConstraints="NO" id="m1w-VK-XXt">
                         <rect key="frame" x="187.5" y="135" width="187.5" height="94.5"/>
                     </imageView>
-                    <imageView tag="201" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_my_banner" translatesAutoresizingMaskIntoConstraints="NO" id="j3V-uN-z6L">
+                    <imageView tag="201" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity2" translatesAutoresizingMaskIntoConstraints="NO" id="j3V-uN-z6L">
                         <rect key="frame" x="187.5" y="40" width="187.5" height="95"/>
                     </imageView>
                 </subviews>
@@ -104,7 +104,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bg_my_banner" width="375" height="180"/>
+        <image name="activity1" width="374" height="179"/>
+        <image name="activity2" width="375" height="179"/>
+        <image name="activity3" width="374" height="179"/>
+        <image name="activity4" width="376" height="180"/>
         <image name="home_activity" width="13" height="13"/>
     </resources>
 </document>

@@ -45,18 +45,17 @@
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         YXYFailureResponse * errorResponse = [YXYFailureResponse new];
-        NSError * error = request.requestOperationError;
-        
-        if (error.code == -1005) {
-            errorResponse.msg = @"网络连接已中断，请检查网络设置";
-        }else if (error.code == - 1009){
-            errorResponse.msg = @"似乎已断开与互联网的连接，请检查网络设置";
-        }else{
-            errorResponse.msg = @"系统异常，请稍后再试";
-        }
-        
-        errorResponse.rawError = error;
-        errorResponse._rawResponse = request.responseString;
+//        
+//        if (error.code == -1005) {
+//            errorResponse.msg = @"网络连接已中断，请检查网络设置";
+//        }else if (error.code == - 1009){
+//            errorResponse.msg = @"似乎已断开与互联网的连接，请检查网络设置";
+//        }else{
+//            errorResponse.msg = @"系统异常，请稍后再试";
+//        }
+//        
+//        errorResponse.rawError = error;
+//        errorResponse._rawResponse = request.responseString;
         
         if (failure) {
             failure(request, errorResponse);
@@ -64,9 +63,9 @@
     }];
 }
 
-- (YTKRequestMethod)requestMethod{
-    return YTKRequestMethodPost;
-}
+//- (YTKRequestMethod)requestMethod{
+//    return YTKRequestMethodPost;
+//}
 
 
 @end

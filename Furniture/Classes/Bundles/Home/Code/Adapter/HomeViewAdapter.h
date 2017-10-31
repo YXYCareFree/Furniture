@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HomeViewInteractor.h"
+
 @class HomeBannerModel;
 @class HomeCategoryModel;
 @class HomeRecoomendGoodsModel;
@@ -16,6 +18,8 @@
 @property (nonatomic, strong) NSArray<HomeBannerModel *> * bannerModels;
 @property (nonatomic, strong) NSArray<HomeCategoryModel *> * categoryModels;
 @property (nonatomic, strong) NSArray<HomeRecoomendGoodsModel *> * recommendGoodsModels;
+
+@property (nonatomic, strong) HomeViewInteractor * interactor;
 
 //@property (nonatomic, strong) NSMutableArray * bannerModels;
 //@property (nonatomic, strong) NSMutableArray * categoryModels;

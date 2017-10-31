@@ -12,11 +12,11 @@
 #import <WebKit/WebKit.h>
 #import "WKWebViewJavascriptBridge.h"
 
-static NSString * detailbaseUrl = @"http://180.76.185.85:9003/mall/app/prodDetail.htm?commodityCode=";
-static NSString * categoryBaseURL = @"http://180.76.185.85:9003/mall/app/prodList.htm?categoryCode=";
-static NSString * searchUrl = @"http://180.76.185.85:9003/mall/app/prodList.htm?";
-
-@interface YXYWKWebViewController ()
+@interface YXYWKWebViewController (){
+    NSString * detailbaseUrl;
+    NSString * categoryBaseURL;
+    NSString * searchUrl;
+}
 
 @property (nonatomic, strong) WKWebViewJavascriptBridge * bridge;
 @property (nonatomic, strong) YXYJSMethodBase * jsMethodBase;
@@ -45,6 +45,10 @@ static NSString * searchUrl = @"http://180.76.185.85:9003/mall/app/prodList.htm?
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    detailbaseUrl = [NSString stringWithFormat:@"%@/mall/app/prodDetail.htm?commodityCode=", BASE_URL];
+    categoryBaseURL = [NSString stringWithFormat:@"%@/mall/app/prodList.htm?categoryCode=", BASE_URL];
+    searchUrl = [NSString stringWithFormat:@"%@/mall/app/prodList.htm?", BASE_URL];
 
 //    [self deleteWebCache];
     [self createWKWebView];

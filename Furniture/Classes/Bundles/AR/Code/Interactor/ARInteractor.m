@@ -17,26 +17,37 @@
 #import "NetworkManager.h"
 #import "CTToastView.h"
 #import "SDKTools.h"
+#import "AFNetworkReachabilityManager.h"
 
 @implementation ARInteractor{
     NSArray * _dataArr;
+    NSMutableArray * _downLoadTaskArr;
+    NSMutableArray * _downLoadingUrlArr;
 }
 
 - (instancetype)init{
     if (self = [super init]) {
-       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView:) name:GetARListDataSuccess object:nil];     
+       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView:) name:GetARListDataSuccess object:nil];
     }
     return self;
 }
 
+- (void)dealloc{
+    NSLog(@"dealloc==%@", [self class]);
+    [_downLoadTaskArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSURLSessionDownloadTask * task = (NSURLSessionDownloadTask *)obj;
+        [task cancel];
+        NSLog(@"task取消");
+    }];
+}
+
 - (void)loadGoodsList{
-    
-    if ([[NetworkManager getCurrentNetwork] isEqualToString:@"notReachable"]) {
-        CTToastView * toastView =  [CTToastView presentModelToastWithin:self.controller.view text:@"当前无网络,请检查网络" autoHidden:YES];
-        toastView.center = CGPointMake(kScreenHeight / 2, kScreenWidth / 2);
-        return;
-    }
+   
+//    [DownloadFileManager clearAllCaches];
     _dataArr = [NSArray new];
+    _downLoadTaskArr = [NSMutableArray new];
+    _downLoadingUrlArr = [NSMutableArray new];
+    
     [[ARAdapter new] getARList];
 }
 
@@ -56,7 +67,6 @@
 }
 
 #pragma mark--UITableViewDataSource
-#pragma mark - TableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [_dataArr count];
 }
@@ -67,14 +77,29 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    ARTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ARTableViewCell"];
+    NSString * imageURL = _dataArr[indexPath.section][@"commodityPic"];
+
+    NSString * resue = [NSString stringWithFormat:@"ARTableViewCell%d", (int)indexPath.section];
+    [tableView registerNib:[UINib nibWithNibName:@"ARTableViewCell" bundle:nil] forCellReuseIdentifier:resue];
+    ARTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:resue forIndexPath:indexPath];
+
     if (!cell) {
+        
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ARTableViewCell" owner:nil options:nil] firstObject];
     }
-    NSString * imageURL = _dataArr[indexPath.section][@"commodityPic"];
+    
+    //progress的初始化避免由于cell的复用导致progress显示错误
+    NSString * md5 = [_dataArr[indexPath.section][@"arUrl"] stringFromMD5];
+    NSString * destinationPath = [AR_CACHES_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"AR%@", md5]];
+    if ([DownloadFileManager sizeCachesWithPath:destinationPath] > 0) {
+        [cell.progressView setProgress:1.0];
+    }else{
+        [cell.progressView setProgress:0];
+    }
+    
     [cell.picImageView sd_setImageWithURL:URLWITHSTRING(imageURL) placeholderImage:nil];
     cell.backgroundColor = [UIColor clearColor];
-    
+
     return cell;
 }
 
@@ -84,7 +109,7 @@
     [label setBackgroundColor:[UIColor clearColor]];
     [label setText:[NSString stringWithFormat:@"%@", _dataArr[section][@"commodityName"]]];
     [label setTextColor:colorFromHexString(@"ffffff")];
-    //    label.backgroundColor = [UIColor whiteColor];
+
     return label;
     
 }
@@ -101,37 +126,51 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     NSString * md5 = [_dataArr[indexPath.section][@"arUrl"] stringFromMD5];
     NSString * destinationPath = [AR_CACHES_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"AR%@", md5]];
+    
+    //正在下载或者URL为nil
+    if ([_downLoadingUrlArr containsObject:md5] || STRING_ISNIL(_dataArr[indexPath.section][@"arUrl"])) {
+        return;
+    }
     
     ARTableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
 
     //判断是否缓存
-    if ([self existedFile:destinationPath]) {
+    if ([DownloadFileManager sizeCachesWithPath:destinationPath] > 0) {
         
         [cell.progressView setProgress:1 animated:YES];
         [self handelFile:destinationPath indexPath:indexPath];
         
         return;
     }
+
+    [_downLoadingUrlArr addObject:md5];
+    
     __weak ARInteractor * weakSelf = self;
     //arUrl
-    [[DownloadFileManager new] downloadFileWithUrl:_dataArr[indexPath.section][@"arUrl"] progress:^(double progress) {
+    __block NSURLSessionDownloadTask * task = [[DownloadFileManager new] downloadFileWithUrl:_dataArr[indexPath.section][@"arUrl"] progress:^(double progress) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [cell.progressView setProgress:progress animated:YES];
-
         });
-        NSLog(@"cell progress==%f", progress);
         
     } success:^(NSString *filePath) {
         
         [weakSelf handelFile:filePath indexPath:indexPath];
+        [_downLoadTaskArr removeObject:task];
+        [_downLoadingUrlArr removeObject:md5];
         
     } failure:^(NSError *error) {
-        
+        [_downLoadTaskArr removeObject:task];
+        [_downLoadingUrlArr removeObject:md5];
     }];
+
+    BOOL isContain = [_downLoadTaskArr containsObject:task];
+    if (!isContain) {
+        [_downLoadTaskArr addObject:task];
+    }
 }
 
 - (void)handelFile:(NSString *)filePath indexPath:(NSIndexPath *)indexPath{
@@ -148,20 +187,7 @@
                 NSLog(@"\n\n#######加载模型");
             }
         }
-        
     }
-}
-
-- (BOOL)existedFile:(NSString *)filePath{
-    
-    NSFileManager * fileManager = [NSFileManager defaultManager];
-    
-    BOOL existed = [fileManager fileExistsAtPath:filePath];
-    
-    if (!existed) {
-        [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    return existed;
 }
 
 #pragma mark--NSNotification

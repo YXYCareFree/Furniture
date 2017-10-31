@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIPageControl           *imagePageControl;
 @property (nonatomic, assign) NSInteger               slideIntoNumber;
 @property (nonatomic, strong) MPMoviePlayerController *playerController;
+@property (nonatomic, strong) UIButton                * skipBtn;
 @end
 
 @implementation DHGuidePageHUD
@@ -43,13 +44,13 @@
         [self addSubview:guidePageView];
         
         // 设置引导页上的跳过按钮
-        UIButton *skipButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.8, DDScreenW*0.1, 50, 25)];
-        [skipButton setTitle:@"跳过" forState:UIControlStateNormal];
-        [skipButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [skipButton setBackgroundColor:[UIColor grayColor]];
-        [skipButton.layer setCornerRadius:5.0];
-        [skipButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:skipButton];
+        self.skipBtn = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.8, DDScreenW*0.1, 50, 25)];
+        [self.skipBtn setTitle:@"跳过" forState:UIControlStateNormal];
+        [self.skipBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.skipBtn setBackgroundColor:[UIColor grayColor]];
+        [self.skipBtn.layer setCornerRadius:5.0];
+        [self.skipBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.skipBtn];
         
         // 添加在引导视图上的多张引导图片
         for (int i=0; i<imageNameArray.count; i++) {
@@ -147,6 +148,10 @@
         }];
     }
     return self;
+}
+//设置skipBtn的位置
+- (void)setSkipBtnRect:(CGRect)skipBtnRect{
+    self.skipBtn.frame = skipBtnRect;
 }
 
 @end

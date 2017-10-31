@@ -32,5 +32,5 @@ extern "C"  void MousePitch_SetObjectHighlight_m4165156855 (MousePitch_t16944573
 extern "C"  void MousePitch_RemoveComponent_m812090989 (MousePitch_t1694457349 * __this, GameObject_t1756533147 * ___obj0, const MethodInfo* method) IL2CPP_METHOD_ATTR;
 // System.Void MousePitch::AddComponent(UnityEngine.GameObject)
 extern "C"  void MousePitch_AddComponent_m3369140748 (MousePitch_t1694457349 * __this, GameObject_t1756533147 * ___obj0, const MethodInfo* method) IL2CPP_METHOD_ATTR;
-// System.Void MousePitch::SetMeasureVisible(UnityEngine.GameObject,System.Boolean)
-extern "C"  void MousePitch_SetMeasureVisible_m3501696371 (MousePitch_t1694457349 * __this, GameObject_t1756533147 * ___obj0, bool ___measureVisible1, const MethodInfo* method) IL2CPP_METHOD_ATTR;
+// System.Void MousePitch::SetMeasureVisible()
+extern "C"  void MousePitch_SetMeasureVisible_m307695144 (MousePitch_t1694457349 * __this, const MethodInfo* method) IL2CPP_METHOD_ATTR;

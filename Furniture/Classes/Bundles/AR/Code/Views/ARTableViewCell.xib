@@ -40,7 +40,7 @@
                 <outlet property="picImageView" destination="kdB-wH-1WS" id="RsB-Jr-kPk"/>
                 <outlet property="progressView" destination="i67-qz-4pn" id="Vif-gn-wI8"/>
             </connections>
-            <point key="canvasLocation" x="-32.5" y="190"/>
+            <point key="canvasLocation" x="-33" y="190"/>
         </tableViewCell>
     </objects>
 </document>

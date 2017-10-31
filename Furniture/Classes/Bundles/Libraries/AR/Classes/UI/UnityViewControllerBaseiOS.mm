@@ -9,6 +9,7 @@
 #include "UnityAppController.h"
 #include "UnityAppController+ViewHandling.h"
 #include "Unity/ObjCRuntime.h"
+#import "AlvaTool.h"
 
 #include <math.h>
 
@@ -91,8 +92,11 @@ static void ViewWillTransitionToSize_DefaultImpl(id self_, SEL _cmd, CGSize size
         
         _PrefersStatusBarHiddenInited = true;
     }
-//    return _PrefersStatusBarHidden;
-    return _statusBarHidden;
+    //    return _PrefersStatusBarHidden;
+#warning 修改2
+
+//    return _statusBarHidden;
+    return  [AlvaTool sharedInstance].isStatusBarHidden;
 }
 #warning 修改1
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -143,18 +147,18 @@ static void ViewWillTransitionToSize_DefaultImpl(id self_, SEL _cmd, CGSize size
 @end
 
 @implementation UnityDefaultViewController
-#warning 修改2
+#warning 修改3
 //- (NSUInteger)supportedInterfaceOrientations
 //{
 //    NSAssert(UnityShouldAutorotate(), @"UnityDefaultViewController should be used only if unity is set to autorotate");
-//    
+//
 //    NSUInteger ret = 0;
-//    
+//
 //    if(UnityIsOrientationEnabled(portrait))				ret |= (1 << UIInterfaceOrientationPortrait);
 //    if(UnityIsOrientationEnabled(portraitUpsideDown))	ret |= (1 << UIInterfaceOrientationPortraitUpsideDown);
 //    if(UnityIsOrientationEnabled(landscapeLeft))		ret |= (1 << UIInterfaceOrientationLandscapeRight);
 //    if(UnityIsOrientationEnabled(landscapeRight))		ret |= (1 << UIInterfaceOrientationLandscapeLeft);
-//    
+//
 //    return ret;
 //}
 @end

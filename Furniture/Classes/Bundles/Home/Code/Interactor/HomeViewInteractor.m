@@ -31,14 +31,13 @@
 
 #import "LoginViewController.h"
 #import "SearchDetailViewController.h"
-#import "SDPhotoBrowser.h"
 #import "SDCollectionViewCell.h"
 
 static NSString * const FountionCell = @"FounctionCell";
 static NSString * const RecommendCell = @"RecommendTableViewCell";
 static NSString * const ActivityCell = @"ActivityTableViewCell";
 
-@interface HomeViewInteractor ()<UIScrollViewDelegate, SDCycleScrollViewDelegate, SDPhotoBrowserDelegate>
+@interface HomeViewInteractor ()<UIScrollViewDelegate, SDCycleScrollViewDelegate>
 
 @property (nonatomic, assign) CGFloat categoryRowHeight;
 
@@ -59,11 +58,16 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
     
     if (self = [super init]) {
         
-        [self.controller.tableView registerNib:[UINib nibWithNibName:@"ActivityTableViewCell" bundle:nil] forCellReuseIdentifier:ActivityCell];
+        [self.controller.tableView registerNib:[UINib nibWithNibName:@"ActivityTableViewCell"
+                                                              bundle:nil]
+                        forCellReuseIdentifier:ActivityCell];
         
-        [self.controller.tableView registerNib:[UINib nibWithNibName:@"RecommendTableViewCell" bundle:nil] forCellReuseIdentifier:RecommendCell];
+        [self.controller.tableView registerNib:[UINib nibWithNibName:@"RecommendTableViewCell"
+                                                              bundle:nil]
+                        forCellReuseIdentifier:RecommendCell];
         
-        [self.controller.tableView registerClass:[FunctionTableViewCell class] forCellReuseIdentifier:FountionCell];
+        [self.controller.tableView registerClass:[FunctionTableViewCell class]
+                          forCellReuseIdentifier:FountionCell];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(updateHomeBannerView:)
@@ -98,7 +102,12 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
     }
     
     HomeViewAdapter * adapter = [HomeViewAdapter new];
+    adapter.interactor = self;
     [adapter requestHomeData];
+}
+
+- (void)endRefreshHome{
+    [self.controller.tableView.mj_header endRefreshing];
 }
 
 - (void)loadHome{
@@ -154,19 +163,11 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
 #pragma mark--用户点击事件
 - (void)scanClicked:(id)sender{
     PUSHCONTROLLER_WITHCLASSNAME(@"ScanViewController");
-//    ScanViewController * scanVC = [ScanViewController new];
-//    [self.controller.navigationController customNoBackTitlePushViewController:scanVC animated:YES];
 }
 
 - (void)ARClicked:(id)sender{
     
     PUSHCONTROLLER_WITHCLASSNAME(@"ARController");
-    
-//    [self.controller.navigationController presentViewController:[LoginViewController new] animated:YES completion:nil];
-    
-//    SearchDetailViewController * vc = [SearchDetailViewController new];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [self.controller.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)categoryClicked:(UITapGestureRecognizer *)tap{
@@ -197,62 +198,11 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
 #pragma mark--SDCycleScrollViewDelegate
 /** 点击轮播图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    
-//    cycleScrollView.autoScroll = NO;
-//    
-//    SDPhotoBrowser * photoBrowser = [SDPhotoBrowser new];
-//    photoBrowser.currentImageIndex = index;
-//    photoBrowser.imageCount = self.bannerArr.count;
-//    
-//    UICollectionView * collectionView;
-//    for (UIView * view in cycleScrollView.subviews) {
-//        if ([view isKindOfClass:[UICollectionView class]]) {
-//            collectionView = (UICollectionView *)view;
-//        }
-//    }
-//    photoBrowser.sourceImagesContainerView = collectionView;
-//    photoBrowser.delegate = self;
-//    
-//    [photoBrowser show];
-//
+
     HomeBannerModel * model = self.bannerArr[index];
     
     [YXYWebViewManager openURL:model.imgHrefLocation];
     NSLog(@"点击了第%ld张", index);
-}
-
-//- (void)getCurrentImage:(UIImage *)image{
-//    _currentImage = image;
-//}
-
-#pragma mark--SDPhotoBrowserDelegate
-- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
-    return _currentImage;
-//    UICollectionView * collectionView;
-//    for (UIView * view in self.controller.headerBannerView.subviews) {
-//        if ([view isKindOfClass:[SDCycleScrollView class]]) {
-//            
-//            for (UIView * subView in view.subviews) {
-//              
-//                if ([subView isKindOfClass:[UICollectionView class]]) {
-//                   
-//                    collectionView = (UICollectionView *)subView;
-//                    
-//                    SDCollectionViewCell * cell = (SDCollectionViewCell *)[collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-//                    NSLog(@"%p", cell);
-//                    return cell.imageView.image;
-//                }
-//            }
-//        }
-//    }
-//    return nil;
-}
-
-- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index{
-    
-    HomeBannerModel * model = self.bannerArr[index];
-
-    return URLWITHSTRING(model.imgLocation);
 }
 
 #pragma mark--UITableViewDataSource
@@ -267,14 +217,16 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 0) {
+       
         FunctionTableViewCell * cell = [[FunctionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FountionCell dataArr:nil];
         cell.height = _categoryRowHeight;
         cell.interactor = self;
         [cell setupScrollView:self.categoryArr];
-        //[cell setupScrollViewTest];
         return cell;
     }
+    
     if (indexPath.section == 1) {
+    
         ActivityTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ActivityCell];
         if (!cell) {
             NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"ActivityTableViewCell" owner:nil options:nil];
@@ -283,12 +235,13 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
                     cell = (ActivityTableViewCell *)view;
                 }
             }
-//            cell = [[[NSBundle mainBundle] loadNibNamed:@"ActivityTableViewCell" owner:nil options:nil] firstObject];
+
             cell.interactor = self;
         }
         [cell setupView];
         return cell;
     }
+    
     if (indexPath.section == 2) {
         RecommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:RecommendCell];
         if (!cell) {
@@ -315,10 +268,12 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
         CGFloat top = 15;
         CGFloat bottom = 25;
         CGFloat itemHeight;
+        
         if (IS_IPAD_PRO || IS_IPAD) {
             itemHeight = 80;
-        }else
-        itemHeight = 59;
+        }else  itemHeight = 59;
+        
+        
         NSInteger count = self.categoryArr.count;
         
         if (count == 0) {
@@ -336,17 +291,16 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
             return  _categoryRowHeight;
         }
     }
+    
     if (indexPath.section == 1) {
         if (IS_IPAD_PRO || IS_IPAD) {
             return 380;
         }
         return 230;
     }
+    
     if (indexPath.section == 2) {
-//        if (kScreenHeight <) {
-//            <#statements#>
-//        }
-       // NSLog(@"%f", kScreenHeight);
+
         if (IS_IPAD_PRO || IS_IPAD) {
             return 450;
         }
@@ -363,6 +317,7 @@ static NSString * const ActivityCell = @"ActivityTableViewCell";
 }
 #pragma mark--UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+   
     UIView * view = scrollView.superview;
     for (UIView * page in view.subviews) {
         if ([page isKindOfClass:[UIPageControl class]]) {

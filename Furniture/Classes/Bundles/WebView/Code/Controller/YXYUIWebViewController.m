@@ -13,12 +13,11 @@
 #import "WebViewJavascriptBridge.h"
 #import "Masonry.h"
 
-static NSString * detailbaseUrl = @"http://180.76.185.85:9003/mall/app/prodDetail.htm?commodityCode=";
-static NSString * categoryBaseURL = @"http://180.76.185.85:9003/mall/app/prodList.htm?categoryCode=";
-
-static NSString * searchUrl = @"http://180.76.185.85:9003/mall/app/prodList.htm?";
-
-@interface YXYUIWebViewController ()<UIWebViewDelegate>
+@interface YXYUIWebViewController ()<UIWebViewDelegate>{
+    NSString * detailbaseUrl;
+    NSString * categoryBaseURL;
+    NSString * searchUrl;
+}
 
 @property (nonatomic, strong) YXYJSMethodBase * jsMethodBase;
 @property (nonatomic, strong) UIWebView * webView;
@@ -45,6 +44,10 @@ static NSString * searchUrl = @"http://180.76.185.85:9003/mall/app/prodList.htm?
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    detailbaseUrl = [NSString stringWithFormat:@"%@/mall/app/prodDetail.htm?commodityCode=", BASE_URL];
+    categoryBaseURL = [NSString stringWithFormat:@"%@/mall/app/prodList.htm?categoryCode=", BASE_URL];
+    searchUrl = [NSString stringWithFormat:@"%@/mall/app/prodList.htm?", BASE_URL];
     
     [self createUIWebView];
     [self addProgressView];
@@ -100,8 +103,9 @@ static NSString * searchUrl = @"http://180.76.185.85:9003/mall/app/prodList.htm?
     }
     [_webView addSubview:_progressView];
     webView.scrollView.scrollEnabled = YES;
-    [UIView animateWithDuration:10.0f animations:^{
-        self.progressLayer.frame = CGRectMake(0, 0, kScreenWidth * 0.8, 3);
+
+    [UIView animateWithDuration:5 animations:^{
+        self.progressLayer.frame = CGRectMake(0, 0, kScreenWidth * 0.7, 3);
     }];
 }
 
@@ -112,7 +116,6 @@ static NSString * searchUrl = @"http://180.76.185.85:9003/mall/app/prodList.htm?
             [self.progressView removeFromSuperview];
         });
     }];
-    
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
@@ -191,17 +194,30 @@ static NSString * searchUrl = @"http://180.76.185.85:9003/mall/app/prodList.htm?
 
 - (void)loadWebView{
     
+    NSMutableURLRequest * request = [NSMutableURLRequest new];
+    request.timeoutInterval = 10.0;
+    
     if ([self.type isEqualToString:@"category"]) {
-        [_webView loadRequest:[NSURLRequest requestWithURL:URLWITHSTRING([categoryBaseURL stringByAppendingString:_code])]];
+        
+        request.URL = URLWITHSTRING([categoryBaseURL stringByAppendingString:_code]);
+        [_webView loadRequest:request];
+        
     }else if ([self.type isEqualToString:@"detail"]) {
-        [_webView loadRequest:[NSURLRequest requestWithURL:URLWITHSTRING([detailbaseUrl stringByAppendingString:_code])]];
+
+        request.URL = URLWITHSTRING([detailbaseUrl stringByAppendingString:_code]);
+        [_webView loadRequest:request];
+        
     }else if ([self.type isEqualToString:@"search"]){
         
         NSString * url = [NSString stringWithFormat:@"%@forSearch=%@&isAr=%@", searchUrl, _forSearch, _isAr];
-        [_webView loadRequest:[NSURLRequest requestWithURL:URLWITHSTRING(url)]];
+        request.URL = URLWITHSTRING(url);
+        [_webView loadRequest:request];
+        
     }else{
+        
         NSLog(@"url === %@", _url);
-        [_webView loadRequest:[NSURLRequest requestWithURL:URLWITHSTRING(_url)]];
+        request.URL = URLWITHSTRING(_url);
+        [_webView loadRequest:request];
     }
 }
 

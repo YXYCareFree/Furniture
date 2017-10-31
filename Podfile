@@ -1,6 +1,6 @@
 target 'Furniture' do
 
-pod 'AFNetworking', '~> 2.6.0'
+pod 'AFNetworking'
 
 pod 'WebViewJavascriptBridge',  '~> 5.0'
 
@@ -22,4 +22,7 @@ pod 'JSONModel'
 pod 'SSZipArchive'
 
 pod 'YTKNetwork'
+
+pod 'JPush'
+
 end

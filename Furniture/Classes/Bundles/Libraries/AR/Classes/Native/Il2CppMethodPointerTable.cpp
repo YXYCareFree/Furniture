@@ -14211,7 +14211,7 @@ extern "C" void MousePitch_Update_m1951535685 ();
 extern "C" void MousePitch_SetObjectHighlight_m4165156855 ();
 extern "C" void MousePitch_RemoveComponent_m812090989 ();
 extern "C" void MousePitch_AddComponent_m3369140748 ();
-extern "C" void MousePitch_SetMeasureVisible_m3501696371 ();
+extern "C" void MousePitch_SetMeasureVisible_m307695144 ();
 extern "C" void NativeLoad__ctor_m2515877154 ();
 extern "C" void NativeLoad_Start_m2112768266 ();
 extern "C" void NativeLoad_Update_m1698331681 ();
@@ -28610,7 +28610,7 @@ extern const Il2CppMethodPointer g_MethodPointers[14397] =
 	MousePitch_SetObjectHighlight_m4165156855,
 	MousePitch_RemoveComponent_m812090989,
 	MousePitch_AddComponent_m3369140748,
-	MousePitch_SetMeasureVisible_m3501696371,
+	MousePitch_SetMeasureVisible_m307695144,
 	NativeLoad__ctor_m2515877154,
 	NativeLoad_Start_m2112768266,
 	NativeLoad_Update_m1698331681,

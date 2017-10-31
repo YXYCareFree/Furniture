@@ -62,7 +62,7 @@ static NSString * className = nil;
 }
 
 /**
- 3.完整的消息转发
+ 完整的消息转发
  */
 // 我们首先要通过, 指定方法签名，若返回nil，则表示不处理。
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
@@ -94,6 +94,7 @@ static NSString * className = nil;
 // 消息没发实现会调用这个方法
 - (void)doesNotRecognizeSelector:(SEL)aSelector
 {
+    NSAssert(NO, @"消息转发失败");
     NSLog(@"哈哈哈哈：%@", NSStringFromSelector(aSelector));
 }
 

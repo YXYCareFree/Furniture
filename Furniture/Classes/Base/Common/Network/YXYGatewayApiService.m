@@ -33,8 +33,7 @@
         [self handleCache:request];
     }
 
-//    NSString * net = [NetworkManager getCurrentNetwork];
-    NSString * net = [[NetworkManager new] getCurrentNetwork];
+    NSString * net = [NetworkManager getCurrentNetwork];
     if ([net isEqualToString:@"notReachable"]) {
         
         [CTToastView presentModelToastWithin:GETCURRENTCONTROLLER.view text:@"当前无网络,请检查网络" autoHidden:YES];
@@ -43,8 +42,8 @@
 
 //    WEAKSELF;
     __weak YXYGatewayApiService * weakSelf = self;
-    [[YXYHTTPRequestClient shareManager] postPath:request.apiName apiVersion:request.apiVersion parameters:request.params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+    [[YXYHTTPRequestClient shareManager] postPath:request.apiName apiVersion:request.apiVersion parameters:request.params success:^(NSURLSessionDataTask *task, id  _Nullable responseObject) {
+        
         id success = [responseObject valueForKey:@"success"];
         if (success && [success boolValue]) {
             YXYResponse * response = [YXYResponse new];
@@ -52,12 +51,11 @@
             if (!response.data) {
                 response.data = [responseObject valueForKey:@"content"];
             }
-            response._rawResponse = operation.responseString;
             
             if ([self respondsToSelector:@selector(processResponse:response:)]) {
                 [weakSelf processResponse:request response:response];
             }
-
+            
         }else{
             
             YXYErrorResponse * errorResponse = [YXYErrorResponse new];
@@ -67,15 +65,14 @@
             if (errorResponse.msg.length <= 0) {
                 errorResponse.msg = @"系统异常请稍后再试";
             }
-            errorResponse._rawResponse = operation.responseString;
             if ([self respondsToSelector:@selector(processError:response:)]) {
                 [weakSelf processError:request response:errorResponse];
             }
         }
-
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError *error) {
+        
         YXYErrorResponse * errorResponse = [YXYErrorResponse new];
         if (error.code == -1005) {
             errorResponse.msg = @"网络连接已中断，请检查网络设置";
@@ -86,12 +83,62 @@
         }
         
         errorResponse.rawError = error;
-        errorResponse._rawResponse = operation.responseString;
         
         if ([self respondsToSelector:@selector(processError:response:)]) {
             [weakSelf processError:request response:errorResponse];
         }
+        
     }];
+
+//    [[YXYHTTPRequestClient shareManager] postPath:request.apiName apiVersion:request.apiVersion parameters:request.params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//
+//        id success = [responseObject valueForKey:@"success"];
+//        if (success && [success boolValue]) {
+//            YXYResponse * response = [YXYResponse new];
+//            response.data = [responseObject valueForKey:@"data"];
+//            if (!response.data) {
+//                response.data = [responseObject valueForKey:@"content"];
+//            }
+//            response._rawResponse = operation.responseString;
+//            
+//            if ([self respondsToSelector:@selector(processResponse:response:)]) {
+//                [weakSelf processResponse:request response:response];
+//            }
+//
+//        }else{
+//            
+//            YXYErrorResponse * errorResponse = [YXYErrorResponse new];
+//            errorResponse.responseObject = responseObject;
+//            errorResponse.code = [responseObject valueForKey:@"errorCode"];
+//            errorResponse.msg = [responseObject valueForKey:@"errorMsg"];
+//            if (errorResponse.msg.length <= 0) {
+//                errorResponse.msg = @"系统异常请稍后再试";
+//            }
+//            errorResponse._rawResponse = operation.responseString;
+//            if ([self respondsToSelector:@selector(processError:response:)]) {
+//                [weakSelf processError:request response:errorResponse];
+//            }
+//        }
+//
+//
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//
+//        YXYErrorResponse * errorResponse = [YXYErrorResponse new];
+//        if (error.code == -1005 || error.code == -1004) {
+//            errorResponse.msg = @"网络连接已中断，请检查网络设置";
+//        }else if (error.code == - 1009){
+//            errorResponse.msg = @"似乎已断开与互联网的连接，请检查网络设置";
+//        }else{
+//            errorResponse.msg = @"系统异常，请稍后再试";
+//        }
+//        
+//        errorResponse.rawError = error;
+//        errorResponse._rawResponse = operation.responseString;
+//        
+//        if ([self respondsToSelector:@selector(processError:response:)]) {
+//            [weakSelf processError:request response:errorResponse];
+//        }
+//    }];
 }
 
 - (void)processResponse:(YXYRequest *)request response:(YXYResponse *)response{
@@ -104,7 +151,8 @@
     if (request.failure) {
         request.failure(errorResponse);
     }
-    [CTToastView presentModelToastWithin:GETCURRENTCONTROLLER.view text:@"当前无网络,请检查网络" autoHidden:YES];
+
+    [CTToastView presentModelToastWithin:GETCURRENTCONTROLLER.view text:errorResponse.msg autoHidden:YES];
 }
 
 - (void)handleCache:(YXYRequest *)request{
@@ -112,7 +160,6 @@
     NSString * filePath = [AR_CACHES_PATH stringByAppendingPathComponent:[request.apiName stringFromMD5]];
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:nil]) {
         NSArray * data = [ArchiverManager unArchiveNSArrayWithPath:filePath];
-//        NSLog(@"归档==%@",data);
         
         if (request.success) {
             request.success(nil, data);
